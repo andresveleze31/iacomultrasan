@@ -18,17 +18,17 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { month: "Marzo", desktop: 186 },
+  { month: "Abril", desktop: 305 },
+  { month: "Mayo", desktop: 237 },
+  { month: "Junio", desktop: 73 },
+  { month: "Julio", desktop: 209 },
+  { month: "Agosto", desktop: 214 },
 ]
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Embargos",
     color: "#006667",
   },
 } 
@@ -37,8 +37,8 @@ export function SalesFull() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle><p className="text-lg">Ventas Totales</p></CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle><p className="text-lg">Embargos Totales</p></CardTitle>
+        <CardDescription>Marzo - Septiembre 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>

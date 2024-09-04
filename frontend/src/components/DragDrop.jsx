@@ -7,7 +7,7 @@ import axios from "axios";
 
 const fileTypes = ["PDF"];
 
-function DragDrop({ setFecha, setRadicado, setDemandante, setDemandado, setEmbargo }) {
+function DragDrop({ setFecha, setRadicado, setDemandante, setDemandado, setEmbargo, setCargando }) {
   const { toast } = useToast();
   const [file, setFile] = useState(null);
   const [fileUrl, setFileUrl] = useState("");
@@ -21,6 +21,7 @@ function DragDrop({ setFecha, setRadicado, setDemandante, setDemandado, setEmbar
 
   const getData = async (e) => {
     e.preventDefault();
+    
     if (!file) {
       toast({
         title: "Archivo No Cargado",
@@ -28,6 +29,7 @@ function DragDrop({ setFecha, setRadicado, setDemandante, setDemandado, setEmbar
       });
       return;
     }
+    setCargando(true);
 
     const formData = new FormData();
     formData.append("file", file);
@@ -56,6 +58,7 @@ function DragDrop({ setFecha, setRadicado, setDemandante, setDemandado, setEmbar
       setDemandante(embargo.Nombre_Completo_Demandante);
       setFecha(embargo.Fecha_Embargo)
       setEmbargo(embargo);
+      setCargando(false)
 
     } catch (error) {
       // Manejar los errores

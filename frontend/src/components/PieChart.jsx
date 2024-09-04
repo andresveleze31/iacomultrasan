@@ -19,11 +19,11 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+  { browser: "Usuario 1", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "Usuario 2", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "Usuario 3", visitors: 287, fill: "var(--color-firefox)" },
+  { browser: "Usuario 4", visitors: 173, fill: "var(--color-edge)" },
+  { browser: "Usuario 5", visitors: 190, fill: "var(--color-other)" },
 ];
 
 const chartConfig = {
@@ -61,7 +61,7 @@ export function PieChartComponent() {
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
         <CardTitle>
-          <p className="text-center text-lg">Asistentes</p>
+          <p className="text-center text-lg">Usuarios</p>
         </CardTitle>
         <CardDescription>Este Mes</CardDescription>
       </CardHeader>

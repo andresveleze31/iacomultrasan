@@ -6,12 +6,15 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast, useToast } from "@/hooks/use-toast";
 import React, { useState } from "react";
 import axios from "axios";
+import Loading from "@/components/Loading";
+
 const UploadFile = () => {
   const [fecha, setFecha] = useState("");
   const [radicado, setRadicado] = useState("");
   const [demandante, setDemandante] = useState("");
   const [demandado, setDemandado] = useState("");
   const [embargo, setEmbargo] = useState();
+  const [cargando, setCargando]= useState(false);
   const { toast } = useToast();
 
   const createEmbargo = async (e) => {
@@ -28,7 +31,11 @@ const UploadFile = () => {
         console.log('Datos enviados correctamente:', response.data);
       })
       .catch(error => {
-        console.error('Error al enviar los datos:', error);
+        toast({
+          title: "Embargo No Fue Creado",
+          description: "Ha Ocurrido Un Error",
+        });
+        return console.error('Error al enviar los datos:', error);
       });
 
       toast({
@@ -44,7 +51,10 @@ const UploadFile = () => {
   return (
     <div>
       <h1 className="text-3xl mb-5 font-bold">Subir Archivo</h1>
-      <div className="grid grid-cols-2 gap-8">
+      {cargando ? (
+          <Loading />
+      ) : 
+      (<div className="grid grid-cols-2 gap-8">
         <div className="">
           <DragDrop
             setFecha={setFecha}
@@ -52,6 +62,7 @@ const UploadFile = () => {
             setDemandante={setDemandante}
             setDemandado={setDemandado}
             setEmbargo={setEmbargo}
+            setCargando={setCargando}
           />
         </div>
         <Card>
@@ -79,7 +90,7 @@ const UploadFile = () => {
                 <label className="font-bold" htmlFor="name">
                   Demandante
                 </label>
-                <Input value={demandante} type="text" placeholder="Campo 1" />
+                <Input value={demandante} type="text" placeholder="Demandante" />
               </div>
             </ScrollArea>
             <Button className="w-full mt-7" type="submit">
@@ -87,7 +98,8 @@ const UploadFile = () => {
             </Button>
           </form>
         </Card>
-      </div>
+      </div>)
+      }
     </div>
   );
 };
